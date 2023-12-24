@@ -79,7 +79,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ message: 'OK', use: newUser })
   }
 
-  if(eventType === 'user.update') {
+  if(eventType === 'user.updated') {
     const { id, email_addresses, image_url, first_name, last_name, username } = evt.data
 
     const user = {
@@ -98,7 +98,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ message: 'OK', use: updatedUser })
   }
 
-  if(eventType === 'user.delete') {
+  if(eventType === 'user.deleted') {
     const { id } = evt.data
 
     const deletedUser = await deleteUser(id!)
